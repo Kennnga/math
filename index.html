@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title>Слова і кольори</title>
   <style>
+    :root {
+      --блакитний: #8dcef3;
+      --синій: #0041a5;
+      --чорний: #1c1c1c;
+      --бежевий: #fef0e8;
+      --білий: #ffffff;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -13,6 +21,7 @@
     html, body {
       height: 100%;
       font-family: sans-serif;
+      background-color: var(--бежевий);
     }
 
     .container {
@@ -28,16 +37,18 @@
       font-size: 3em;
       font-weight: bold;
       text-transform: uppercase;
-      color: white;
+      text-align: center;
+      padding: 1em;
     }
 
     .left {
-      background-color: #ffeb3b; /* жовта */
-      color: #333;
+      background-color: var(--блакитний);
+      color: var(--чорний);
     }
 
     .right {
-      background-color: #2196f3; /* синя */
+      background-color: var(--синій);
+      color: var(--білий);
     }
 
     .button-container {
@@ -50,15 +61,16 @@
     button {
       padding: 1em 2em;
       font-size: 1.2em;
-      background-color: white;
-      color: #333;
-      border: 2px solid #333;
+      background-color: var(--білий);
+      color: var(--чорний);
+      border: 2px solid var(--чорний);
       border-radius: 0.5em;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #f0f0f0;
+      background-color: var(--блакитний);
     }
   </style>
 </head>
@@ -81,7 +93,8 @@
     ];
 
     const colors = [
-      "червоний", "зелений", "синій", "жовтий", "помаранчевий", "фіолетовий", "рожевий", "коричневий", "сірий", "чорний", "білий"
+      "червоний", "зелений", "синій", "жовтий", "помаранчевий", "фіолетовий",
+      "рожевий", "коричневий", "сірий", "чорний", "білий"
     ];
 
     function updateWords() {
