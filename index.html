@@ -2,59 +2,94 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Випадкове число</title>
+  <title>Слова і кольори</title>
   <style>
-    body {
-      background-color: #ffeb3b; /* жовтий */
+    * {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      box-sizing: border-box;
     }
 
-    #word {
-      font-size: 5em;
+    html, body {
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100%;
+    }
+
+    .half {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
       font-weight: bold;
       text-transform: uppercase;
-      text-align: center;
+      color: white;
+    }
+
+    .left {
+      background-color: #ffeb3b; /* жовта */
       color: #333;
-      margin-bottom: 2em;
+    }
+
+    .right {
+      background-color: #2196f3; /* синя */
+    }
+
+    .button-container {
+      position: absolute;
+      bottom: 2em;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     button {
       padding: 1em 2em;
-      font-size: 1.5em;
-      background-color: #2196f3; /* синій */
-      color: white;
-      border: none;
+      font-size: 1.2em;
+      background-color: white;
+      color: #333;
+      border: 2px solid #333;
       border-radius: 0.5em;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #1976d2;
+      background-color: #f0f0f0;
     }
   </style>
 </head>
 <body>
 
-  <div id="word">ОДИН</div>
-  <button onclick="showRandomWord()">ще раз</button>
+  <div class="container">
+    <div class="half left" id="word-left">ОДИН</div>
+    <div class="half right" id="word-right">ЧЕРВОНИЙ</div>
+  </div>
+
+  <div class="button-container">
+    <button onclick="updateWords()">ще раз</button>
+  </div>
 
   <script>
-    const words = [
+    const numbers = [
       "один", "два", "три", "чотири", "п’ять", "шість", "сім", "вісім", "дев’ять", "десять",
       "одинадцять", "дванадцять", "тринадцять", "чотирнадцять", "п’ятнадцять", "шістнадцять",
       "сімнадцять", "вісімнадцять", "дев’ятнадцять", "двадцять"
     ];
 
-    function showRandomWord() {
-      const i = Math.floor(Math.random() * words.length);
-      document.getElementById("word").innerText = words[i].toUpperCase();
+    const colors = [
+      "червоний", "зелений", "синій", "жовтий", "помаранчевий", "фіолетовий", "рожевий", "коричневий", "сірий", "чорний", "білий"
+    ];
+
+    function updateWords() {
+      const num = numbers[Math.floor(Math.random() * numbers.length)];
+      const col = colors[Math.floor(Math.random() * colors.length)];
+
+      document.getElementById("word-left").innerText = num.toUpperCase();
+      document.getElementById("word-right").innerText = col.toUpperCase();
     }
   </script>
 
