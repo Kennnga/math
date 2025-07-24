@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Слова і кольори</title>
+  <title>Вибір вправи</title>
   <style>
     :root {
       --блакитний: #8dcef3;
@@ -18,90 +18,60 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
+    body {
       font-family: sans-serif;
       background-color: var(--бежевий);
-    }
-
-    .container {
+      color: var(--чорний);
       display: flex;
-      height: 100%;
-    }
-
-    .half {
-      flex: 1;
-      display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      font-size: 3em;
-      font-weight: bold;
-      text-transform: uppercase;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 2em;
+      font-size: 2em;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1em;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    a.button {
+      display: block;
       text-align: center;
       padding: 1em;
-    }
-
-    .left {
-      background-color: var(--блакитний);
-      color: var(--чорний);
-    }
-
-    .right {
-      background-color: var(--синій);
-      color: var(--білий);
-    }
-
-    .button-container {
-      position: absolute;
-      bottom: 2em;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-   button {
-      padding: 1em 2em;
-      font-size: 1.2em;
+      font-size: 1.1em;
       background-color: var(--бежевий);
       color: var(--чорний);
       border: 2px solid var(--чорний);
       border-radius: 0.5em;
-      cursor: pointer;
+      text-decoration: none;
       transition: border-color 0.3s ease;
     }
 
-  button:hover {
+    a.button:hover {
       border-color: var(--блакитний);
     }
+  </style>
+</head>
+<body>
 
-  <div class="container">
-    <div class="half left" id="word-left">ОДИН</div>
-    <div class="half right" id="word-right">ЧЕРВОНИЙ</div>
+  <h1>Оберіть вправу</h1>
+
+  <div class="button-grid">
+    <a class="button" href="similar.html">🎨 Випадкові слова</a>
+    <a class="button" href="#">🔢 Щось інше</a>
+    <a class="button" href="#">🧠 Ще вправа</a>
+    <a class="button" href="#">📚 Ще одна</a>
+    <a class="button" href="#">🌀 І ще</a>
+    <a class="button" href="#">🎲 Колись буде</a>
   </div>
-
-  <div class="button-container">
-    <button onclick="updateWords()">ще раз</button>
-  </div>
-
-  <script>
-    const numbers = [
-      "один", "два", "три", "чотири", "п’ять", "шість", "сім", "вісім", "дев’ять", "десять",
-      "одинадцять", "дванадцять", "тринадцять", "чотирнадцять", "п’ятнадцять", "шістнадцять",
-      "сімнадцять", "вісімнадцять", "дев’ятнадцять", "двадцять"
-    ];
-
-    const colors = [
-      "червоний", "зелений", "синій", "жовтий", "помаранчевий", "фіолетовий",
-      "рожевий", "коричневий", "сірий", "чорний", "білий"
-    ];
-
-    function updateWords() {
-      const num = numbers[Math.floor(Math.random() * numbers.length)];
-      const col = colors[Math.floor(Math.random() * colors.length)];
-
-      document.getElementById("word-left").innerText = num.toUpperCase();
-      document.getElementById("word-right").innerText = col.toUpperCase();
-    }
-  </script>
 
 </body>
 </html>
