@@ -6,6 +6,14 @@
   <title>Дріб</title>
 
   <style>
+    :root {
+      --блакитний: #8dcef3;
+      --синій: #0041a5;
+      --чорний: #1c1c1c;
+      --бежевий: #fef0e8;
+      --білий: #ffffff;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -18,31 +26,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #fef0e8;
+      background-color: var(--бежевий);
     }
 
-    #fraction {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #0041a5;
-      font-size: min(30vh, 30vw);
-      line-height: 1;
-    }
-
-    #numerator,
-    #denominator {
-      padding: 0 0.2em;
-    }
-
-    #line {
-      width: 1.2em;
-      height: 0.04em;
-      background-color: #0041a5;
-      margin: 0.08em 0;
-    }
-
-        /* Кнопка Назад у верхньому лівому куті */
+    /* Кнопка Назад у верхньому лівому куті */
     .back-button {
       position: fixed;
       top: 10px;
@@ -64,26 +51,48 @@
       border-color: var(--блакитний);
     }
 
-    
+    #fraction {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--синій);
+      font-size: min(30vh, 30vw);
+      line-height: 1;
+    }
+
+    #numerator,
+    #denominator {
+      padding: 0 0.2em;
+    }
+
+    #line {
+      width: 1.2em;
+      height: 0.04em;
+      background-color: var(--синій);
+      margin: 0.08em 0;
+    }
+
     button {
       margin-top: 40px;
       font-size: 24px;
       padding: 10px 20px;
-      color: #ffffff;
-      background-color: #0041a5;
+      color: var(--білий);
+      background-color: var(--синій);
       border: none;
       border-radius: 10px;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #8dcef3;
-      color: #1c1c1c;
+      background-color: var(--блакитний);
+      color: var(--чорний);
     }
   </style>
 </head>
 
 <body>
+
+  <a href="index.html" class="back-button">← Назад</a>
 
   <div id="fraction">
     <div id="numerator">1</div>
