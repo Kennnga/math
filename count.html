@@ -3,8 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Приклад на множення</title>
+  <title>Множення</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #example {
+      font-size: 80vh;
+      line-height: 1;
+    }
+
+    button {
+      margin-top: 20px;
+      font-size: 24px;
+      padding: 10px 20px;
+    }
+  </style>
 </head>
+
 <body>
 
   <div id="example">5 · 3</div>
@@ -22,8 +50,8 @@
       let a, b;
 
       do {
-        a = Math.floor(Math.random() * 8) + 2; // 1–9
-        b = Math.floor(Math.random() * 8) + 2; // 1–9
+        a = Math.floor(Math.random() * 8) + 2;
+        b = Math.floor(Math.random() * 8) + 2;
       } while (a === previousA && b === previousB);
 
       previousA = a;
