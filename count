@@ -1,21 +1,37 @@
-<script>
-  let previousA = 5;
-  let previousB = 3;
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Приклад на множення</title>
+</head>
+<body>
 
-  const example = document.getElementById("example");
-  const button = document.getElementById("changeButton");
+  <div id="example">5 · 3</div>
 
-  button.addEventListener("click", function() {
-    let a, b;
+  <button id="changeButton">Інший приклад</button>
 
-    do {
-      a = Math.floor(Math.random() * 8) + 2; // 2–9
-      b = Math.floor(Math.random() * 8) + 2; // 2–9
-    } while (a === previousA && b === previousB);
+  <script>
+    let previousA = 5;
+    let previousB = 3;
 
-    previousA = a;
-    previousB = b;
+    const example = document.getElementById("example");
+    const button = document.getElementById("changeButton");
 
-    example.textContent = `${a} · ${b}`;
-  });
-</script>
+    button.addEventListener("click", function() {
+      let a, b;
+
+      do {
+        a = Math.floor(Math.random() * 9) + 1; // 1–9
+        b = Math.floor(Math.random() * 9) + 1; // 1–9
+      } while (a === previousA && b === previousB);
+
+      previousA = a;
+      previousB = b;
+
+      example.textContent = `${a} · ${b}`;
+    });
+  </script>
+
+</body>
+</html>
