@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Число</title>
+
+  <style>
+    :root {
+      --блакитний: #8dcef3;
+      --синій: #0041a5;
+      --чорний: #1c1c1c;
+      --бежевий: #fef0e8;
+      --білий: #ffffff;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--бежевий);
+    }
+
+    /* Кнопка Назад у верхньому лівому куті */
+    .back-button {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: var(--бежевий);
+      border: 2px solid var(--чорний);
+      border-radius: 0.5em;
+      padding: 0.4em 1em;
+      font-size: 0.9em;
+      color: var(--чорний);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.3s ease;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    .back-button:hover {
+      border-color: var(--блакитний);
+    }
+
+    #number {
+      color: var(--синій);
+      font-size: min(75vh, 75vw);
+      line-height: 1;
+    }
+
+    #newNumber {
+      margin-top: 40px;
+      font-size: 24px;
+      padding: 10px 20px;
+      color: var(--білий);
+      background-color: var(--синій);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #newNumber:hover {
+      background-color: var(--блакитний);
+      color: var(--чорний);
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-button">← Назад</a>
+
+  <div id="number">1</div>
+
+  <button id="newNumber">Нове число</button>
+
+  <script>
+    const number = document.getElementById("number");
+    const button = document.getElementById("newNumber");
+
+    button.addEventListener("click", function() {
+      const newNumber = Math.floor(Math.random() * 99) + 1;
+      number.textContent = newNumber;
+    });
+  </script>
+
+</body>
+</html>
