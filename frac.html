@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дріб</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fef0e8;
+    }
+
+    #fraction {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #0041a5;
+      font-size: min(30vh, 30vw);
+      line-height: 1;
+    }
+
+    #numerator,
+    #denominator {
+      padding: 0 0.2em;
+    }
+
+    #line {
+      width: 1.2em;
+      height: 0.04em;
+      background-color: #0041a5;
+      margin: 0.08em 0;
+    }
+
+    button {
+      margin-top: 40px;
+      font-size: 24px;
+      padding: 10px 20px;
+      color: #ffffff;
+      background-color: #0041a5;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #8dcef3;
+      color: #1c1c1c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="fraction">
+    <div id="numerator">1</div>
+    <div id="line"></div>
+    <div id="denominator">2</div>
+  </div>
+
+  <button id="newFraction">Новий дріб</button>
+
+</body>
+</html>
