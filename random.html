@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Число</title>
+  <title>Випадкове число</title>
 
   <style>
     :root {
@@ -14,19 +14,19 @@
       --білий: #ffffff;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
+    * {
+      box-sizing: border-box;
     }
 
     body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--бежевий);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      background-color: var(--бежевий);
+      justify-content: center;
+      overflow: hidden;
     }
 
     /* Кнопка Назад у верхньому лівому куті */
@@ -51,24 +51,48 @@
       border-color: var(--блакитний);
     }
 
+    /* Вибір меж */
+    .range-select {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      font-size: 0.9em;
+    }
+
+    .range-select select {
+      font-size: 0.9em;
+      padding: 0.3em 0.5em;
+      border: 2px solid var(--чорний);
+      border-radius: 0.5em;
+      background-color: var(--білий);
+      color: var(--чорний);
+      cursor: pointer;
+    }
+
     #number {
       color: var(--синій);
       font-size: min(75vh, 75vw);
       line-height: 1;
+      user-select: none;
     }
 
-    #newNumber {
-      margin-top: 40px;
-      font-size: 24px;
-      padding: 10px 20px;
-      color: var(--білий);
+    #new-number {
+      margin-top: 2vh;
       background-color: var(--синій);
+      color: var(--білий);
       border: none;
-      border-radius: 10px;
+      border-radius: 0.5em;
+      padding: 0.5em 1em;
+      font-size: 1.2em;
       cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    #newNumber:hover {
+    #new-number:hover {
       background-color: var(--блакитний);
       color: var(--чорний);
     }
@@ -79,18 +103,69 @@
 
   <a href="index.html" class="back-button">← Назад</a>
 
+  <div class="range-select">
+    <select id="min">
+      <option value="1" selected>1</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+
+    <span>–</span>
+
+    <select id="max">
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="99" selected>99</option>
+    </select>
+  </div>
+
   <div id="number">1</div>
 
-  <button id="newNumber">Нове число</button>
+  <button id="new-number">Нове число</button>
 
   <script>
     const number = document.getElementById("number");
-    const button = document.getElementById("newNumber");
+    const minSelect = document.getElementById("min");
+    const maxSelect = document.getElementById("max");
+    const button = document.getElementById("new-number");
 
-    button.addEventListener("click", function() {
-      const newNumber = Math.floor(Math.random() * 99) + 1;
+    function updateMaxOptions() {
+      const min = Number(minSelect.value);
+
+      for (const option of maxSelect.options) {
+        option.disabled = Number(option.value) < min;
+      }
+
+      if (Number(maxSelect.value) < min) {
+        const firstAvailable = [...maxSelect.options]
+          .find(option => !option.disabled);
+
+        maxSelect.value = firstAvailable.value;
+      }
+    }
+
+    function generateNumber() {
+      const min = Number(minSelect.value);
+      const max = Number(maxSelect.value);
+
+      const newNumber =
+        Math.floor(Math.random() * (max - min + 1)) + min;
+
       number.textContent = newNumber;
+    }
+
+    minSelect.addEventListener("change", () => {
+      updateMaxOptions();
+      generateNumber();
     });
+
+    maxSelect.addEventListener("change", generateNumber);
+
+    button.addEventListener("click", generateNumber);
+
+    updateMaxOptions();
   </script>
 
 </body>
